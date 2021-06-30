@@ -3,8 +3,8 @@ const sequelize = require('./database');
 const User = require("./User");
 const ws = require("ws");
 
-
-sequelize.sync().then(() => console.log('database is ready'))
+//  Если в бд есть подобная таблица, но она не соответствует определению модел то "{ force: true }" пересоздаст с новой структурой 
+sequelize.sync({ force: true }).then(() => console.log('database is ready'))
 
 const wss = new ws.Server({
     port: 5000,
